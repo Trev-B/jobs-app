@@ -1,0 +1,67 @@
+.job {
+  border: none;
+  padding: 1rem;
+  margin: 1rem;
+  font-size: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background-color: rgb(245, 245, 245);
+}
+
+.job-details {
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.job-details label {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.job-details a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.job-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.job-buttons button {
+  margin: 0.1rem;
+  border: none;
+  border-radius: 0.2rem;
+  padding: 0.3rem;
+  color: white;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background-color: rgb(82, 158, 116);
+}
+
+.edit-btn-on {
+  background-color: rgb(145, 82, 158);
+}
+
+.delete-btn {
+  background-color: rgb(175, 59, 59);
+}
+
+input {
+  background-color: transparent;
+  border: none;
+  color: black;
+  padding: 0.1rem;
+  margin: 0.1rem;
+}
+
+.job-edit {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+}

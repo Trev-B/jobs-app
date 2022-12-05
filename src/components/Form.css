@@ -1,0 +1,36 @@
+.form-ctn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form-page h2 {
+  font-size: 1.8rem;
+}
+
+.form {
+  background: white;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 0.5rem;
+}
+
+.submit-btn-ctn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submit-btn-ctn button {
+  border: none;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgb(106, 82, 158);
+  color: white;
+  border-radius: 0.2rem;
+}
+
+.submit-btn-ctn button:hover {
+  cursor: pointer;
+}
