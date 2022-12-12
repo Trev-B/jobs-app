@@ -1,13 +1,17 @@
 .job {
   border: none;
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
   margin: 1rem;
   font-size: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   border-radius: 0.5rem;
   background-color: rgb(245, 245, 245);
+  box-shadow: 8px 8px 15px 0px rgba(0, 0, 0, 0.49);
+  -webkit-box-shadow: 8px 8px 15px 0px rgba(0, 0, 0, 0.49);
+  -moz-box-shadow: 8px 8px 15px 0px rgba(0, 0, 0, 0.49);
 }
 
 .job-details {
@@ -18,7 +22,6 @@
 
 .job-details label {
   font-weight: bold;
-  text-decoration: underline;
 }
 
 .job-details a {
@@ -64,4 +67,17 @@ input {
   background-color: white;
   border: 1px solid black;
   color: black;
+}
+
+.job-err-message {
+  font-size: 14px;
+  min-height: 17px;
+  margin-bottom: 0.2rem;
+  text-align: center;
+}
+
+.job-ctn-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

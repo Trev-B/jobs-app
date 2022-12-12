@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Job.css';
 import { updateJob, deleteJob } from '../api-wrapper/jobs';
 
@@ -23,6 +23,7 @@ const Job = (props) => {
     link,
   });
   const [editing, setEditing] = useState(false);
+  const errorMessage = useRef(null);
 
   useEffect(() => {
     const inputs = document.querySelectorAll(`.input-${id}`);
@@ -30,7 +31,7 @@ const Job = (props) => {
       const inputName = input.id.split('-')[0];
       input.value = fields[inputName] || '';
       if (!fields[inputName]) {
-        input.placeholder = '❌';
+        input.placeholder = '✘';
       }
       input.disabled = true;
     });
@@ -65,7 +66,18 @@ const Job = (props) => {
   };
 
   const updateUserJob = async () => {
-    await updateJob(id, fields, localStorage.getItem('token'));
+    const res = await updateJob(id, fields, localStorage.getItem('token'));
+    if (res.err) {
+      errorMessage.current.style.color = 'red';
+      errorMessage.current.innerHTML = res.message;
+      return;
+    }
+    errorMessage.current.style.color = 'green';
+    errorMessage.current.innerHTML = 'Updated';
+
+    setTimeout(() => {
+      errorMessage.current.innerHTML = '';
+    }, 1500);
   };
 
   const deleteUserJob = async () => {
@@ -79,86 +91,90 @@ const Job = (props) => {
 
   return (
     <div className='job'>
-      <div className='job-details'>
-        <label>
-          Position:{' '}
-          <input
-            id={`position-${id}`}
-            className={`input-${id} `}
-            type='text'
-            onChange={updateInput}
-          />
-        </label>
+      <div className='job-ctn-top'>
+        <div className='job-details'>
+          <label>
+            Position:{' '}
+            <input
+              id={`position-${id}`}
+              className={`input-${id} `}
+              type='text'
+              onChange={updateInput}
+            />
+          </label>
 
-        <label>
-          Company:{' '}
-          <input
-            id={`company-${id}`}
-            className={`input-${id} `}
-            type='text'
-            onChange={updateInput}
-          />
-        </label>
+          <label>
+            Company:{' '}
+            <input
+              id={`company-${id}`}
+              className={`input-${id} `}
+              type='text'
+              onChange={updateInput}
+            />
+          </label>
 
-        <label>
-          Status:{' '}
-          <input
-            id={`status-${id}`}
-            className={`input-${id} `}
-            type='text'
-            onChange={updateInput}
-          />
-        </label>
+          <label>
+            Status:{' '}
+            <input
+              id={`status-${id}`}
+              className={`input-${id} `}
+              type='text'
+              onChange={updateInput}
+            />
+          </label>
 
-        <label>
-          Location:{' '}
-          <input
-            id={`location-${id}`}
-            className={`input-${id} `}
-            type='text'
-            onChange={updateInput}
-          />
-        </label>
+          <label>
+            Location:{' '}
+            <input
+              id={`location-${id}`}
+              className={`input-${id} `}
+              type='text'
+              onChange={updateInput}
+            />
+          </label>
 
-        <label>
-          Experience:{' '}
-          <input
-            id={`experience-${id}`}
-            className={`input-${id} `}
-            type='text'
-            onChange={updateInput}
-          />
-        </label>
+          <label>
+            Experience:{' '}
+            <input
+              id={`experience-${id}`}
+              className={`input-${id} `}
+              type='text'
+              onChange={updateInput}
+            />
+          </label>
 
-        <label>
-          Link:{' '}
-          <input
-            id={`link-${id}`}
-            className={`input-${id} `}
-            type='text'
-            onChange={updateInput}
-          />
-          {!fields.link ? (
-            <></>
-          ) : (
-            <a target='_blank' rel='noreferrer' href={`${fields.link}`}>
-              🔗
-            </a>
-          )}
-        </label>
+          <label>
+            Link:{' '}
+            <input
+              id={`link-${id}`}
+              className={`input-${id} `}
+              type='text'
+              onChange={updateInput}
+            />
+            {!fields.link ? (
+              <></>
+            ) : (
+              <a target='_blank' rel='noreferrer' href={`${fields.link}`}>
+                🔗
+              </a>
+            )}
+          </label>
+        </div>
+
+        <div className='job-buttons'>
+          <button className={`edit-btn edit-btn-${id}`} onClick={editJob}>
+            {!editing ? 'Edit' : 'Update'}
+          </button>
+          <button
+            className={`delete-btn delete-btn-${id}`}
+            onClick={deleteUserJob}
+          >
+            Delete
+          </button>
+        </div>
       </div>
 
-      <div className='job-buttons'>
-        <button className={`edit-btn edit-btn-${id}`} onClick={editJob}>
-          {!editing ? 'Edit' : 'Update'}
-        </button>
-        <button
-          className={`delete-btn delete-btn-${id}`}
-          onClick={deleteUserJob}
-        >
-          Delete
-        </button>
-      </div>
+      <div className='job-err-message' ref={errorMessage}></div>
     </div>
   );
 };

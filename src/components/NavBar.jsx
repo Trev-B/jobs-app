@@ -8,10 +8,13 @@ const NavBar = (props) => {
   return (
     <nav className='navbar'>
       <Link to='/'>
-        <h1>Jobs App</h1>
+        <h1>Job Tracer</h1>
       </Link>
       {signedIn ? (
-        <button onClick={signout}>Logout</button>
+        <div className='user-info'>
+          <h3>Hello, {localStorage.getItem('user')}</h3>
+          <button onClick={signout}>Logout</button>
+        </div>
       ) : (
         <div className='nav-links'>
           <Link to='/login'>Login</Link>

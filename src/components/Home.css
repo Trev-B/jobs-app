@@ -22,12 +22,14 @@
 }
 
 .home-links {
-  margin: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .home-link {
   color: black;
-  margin: 1rem;
+  margin: 0.2rem;
   padding: 0.7rem;
   text-decoration: none;
   background: white;
@@ -56,6 +58,7 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  width: 100px;
 }
 
 .home-link:after {
@@ -90,4 +93,8 @@
   .home-link {
     padding: 0 40px;
   }
+}
+
+.info-page-ctn p {
+  margin: 1rem;
 }

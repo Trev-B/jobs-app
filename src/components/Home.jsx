@@ -17,7 +17,10 @@ const Home = (props) => {
   return (
     <div className='home-page'>
       <div className='info-page-ctn'>
-        <h1>Jobs App</h1>
+        <h1>Job Tracer</h1>
+        <p align='center'>
+          Manage and keep track of all of your jobs in one convinent place.
+        </p>
         <div className='home-links'>
           <Link className='home-link' to='/login'>
             Login

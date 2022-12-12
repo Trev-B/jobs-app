@@ -7,6 +7,7 @@
   padding: 0.2rem;
   width: 100%;
   margin-top: 0.15rem;
+  border-radius: 0.2rem;
 }
 
 .radio-buttons-ctn {
@@ -14,7 +15,7 @@
   margin-top: 0.2rem;
   padding: 0.5rem;
   background-color: rgb(238, 238, 238);
-  border-radius: 1rem;
+  border-radius: 0.6rem;
 }
 
 .radio-buttons-ctn label {

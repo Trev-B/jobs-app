@@ -8,9 +8,19 @@ const Register = (props) => {
   const { setLoggedIn } = props;
   const nav = useNavigate();
   const fields = [
-    { name: 'Name', type: 'text', placeholder: 'John Doe' },
-    { name: 'Email', type: 'email', placeholder: 'user@email.com' },
-    { name: 'Password', type: 'password', placeholder: 'password' },
+    { name: 'Name', type: 'text', placeholder: 'John Doe', required: true },
+    {
+      name: 'Email',
+      type: 'email',
+      placeholder: 'user@email.com',
+      required: true,
+    },
+    {
+      name: 'Password',
+      type: 'password',
+      placeholder: 'password',
+      required: true,
+    },
   ];
 
   const onSubmit = async (fieldArgs) => {

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = process.env.REACT_APP_API_URL;
+const URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1';
 
 const register = async (body) => {
   const parsedBody = {};
@@ -16,7 +16,6 @@ const register = async (body) => {
     return res.data;
   } catch (error) {
     console.log(error);
-    return null;
   }
 };
 
@@ -34,7 +33,7 @@ const login = async (body) => {
     return res.data;
   } catch (error) {
     console.log(error);
-    return null;
+    return { err: true, message: error.response.data.msg };
   }
 };
 

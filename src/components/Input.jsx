@@ -3,7 +3,7 @@ import './Input.css';
 
 const Input = (props) => {
   const { inputProps, onChange } = props;
-  const { name, type, placeholder } = inputProps;
+  const { name, type, placeholder, required, checked } = inputProps;
 
   const renderInputType = (inputType) => {
     switch (inputType) {
@@ -11,7 +11,8 @@ const Input = (props) => {
         return (
           <div className='form-input radio-input'>
             <label>
-              {name} :
+              {name}
+              {required ? '* : ' : ' : '}
               <div className='radio-buttons-ctn'>
                 {inputProps.radiogroup.map((button) => {
                   return (
@@ -22,6 +23,7 @@ const Input = (props) => {
                         value={button.value}
                         type={type}
                         onChange={onChange}
+                        required={required}
                       ></input>
                     </label>
                   );
@@ -35,12 +37,14 @@ const Input = (props) => {
         return (
           <div className='form-input'>
             <label>
-              {name}:{' '}
+              {name}
+              {required ? '* : ' : ' : '}
               <input
                 name={name}
                 type={type}
                 placeholder={placeholder}
                 onChange={onChange}
+                required={required}
               ></input>
             </label>
           </div>

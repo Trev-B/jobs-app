@@ -1,6 +1,7 @@
 import axios from 'axios';
+import FileSaver from 'js-file-download';
 
-const URL = process.env.REACT_APP_API_URL;
+const URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api/v1';
 
 const getAllUserJobs = async (token) => {
   try {
@@ -24,7 +25,7 @@ const createJob = async (body, token) => {
       parsedBody[key.toLowerCase()] = body[key];
     }
   }
-  console.log(parsedBody);
+
   try {
     const res = await axios.post(`${URL}/jobs`, parsedBody, {
       headers: {
@@ -48,7 +49,7 @@ const updateJob = async (id, body, token) => {
     return res.data;
   } catch (error) {
     console.log(error);
-    return null;
+    return { err: true, message: error.response.data.msg };
   }
 };
 
@@ -66,4 +67,19 @@ const deleteJob = async (id, token) => {
   }
 };
 
-export { getAllUserJobs, createJob, updateJob, deleteJob };
+const downloadUserJobs = async (token) => {
+  try {
+    const res = await axios.get(`${URL}/jobs/download`, {
+      responseType: 'blob',
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    });
+    const fileName = `${localStorage.getItem('user')}-Jobs.xlsx`;
+    FileSaver(res.data, fileName);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { getAllUserJobs, createJob, updateJob, deleteJob, downloadUserJobs };

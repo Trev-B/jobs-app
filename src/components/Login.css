@@ -12,3 +12,7 @@
     rgba(148, 187, 233, 1) 100%
   );
 }
+
+.login-error-message {
+  color: red;
+}

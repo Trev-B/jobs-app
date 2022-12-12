@@ -7,18 +7,29 @@ const CreateJobForm = (props) => {
   const { setUserJobs } = props;
 
   const fields = [
-    { name: 'Company', type: 'text', placeholder: 'Microsoft' },
-    { name: 'Position', type: 'text', placeholder: 'Software Engineer' },
+    { name: 'Company', type: 'text', placeholder: 'Microsoft', required: true },
+    {
+      name: 'Position',
+      type: 'text',
+      placeholder: 'Software Engineer',
+      required: true,
+    },
     {
       name: 'Status',
       type: 'radio',
+      required: true,
       radiogroup: [
         { value: 'interview' },
         { value: 'pending' },
         { value: 'declined' },
       ],
     },
-    { name: 'Location', type: 'text', placeholder: 'Chicago, IL' },
+    {
+      name: 'Location',
+      type: 'text',
+      placeholder: 'Chicago, IL',
+      required: true,
+    },
     { name: 'Experience', type: 'text', placeholder: '3+ years Java' },
     { name: 'Link', type: 'text', placeholder: 'https://www.linkedin.com/' },
   ];
