@@ -19,7 +19,7 @@ const Home = (props) => {
       <div className='info-page-ctn'>
         <h1>Job Tracer</h1>
         <p align='center'>
-          Manage and keep track of all of your jobs in one convinent place.
+          Manage and keep track of all of your jobs in one convenient place.
         </p>
         <div className='home-links'>
           <Link className='home-link' to='/login'>
