@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import Form from './Form';
 import { login } from '../api-wrapper/auth';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
 
 const Login = (props) => {
@@ -40,6 +40,9 @@ const Login = (props) => {
   return (
     <div className='login-page'>
       <Form title='Login' fields={fields} onSubmit={onSubmit}></Form>
+      <Link className='reset-password-link' to='/reset-password'>
+        Forgot password?
+      </Link>
       <div className='login-error-message' ref={errorMessage}></div>
     </div>
   );

@@ -6,6 +6,8 @@ import Login from './components/Login';
 import './App.css';
 import NavBar from './components/NavBar';
 import UserPage from './components/UserPage';
+import ResetPasswordPage from './components/ResetPasswordPage';
+import ChangePasswordPage from './components/ChangePasswordPage';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -17,6 +19,7 @@ function App() {
       setLoggedIn(true);
       nav('/jobs');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedIn]);
 
   const signout = () => {
@@ -38,6 +41,8 @@ function App() {
         />
         <Route path='/login' element={<Login setLoggedIn={setLoggedIn} />} />
         <Route path='/jobs' element={<UserPage loggedIn={loggedIn} />} />
+        <Route path='/reset-password' element={<ResetPasswordPage />} />
+        <Route path='/change-password' element={<ChangePasswordPage />} />
       </Routes>
     </div>
   );

@@ -35,6 +35,7 @@ const Job = (props) => {
       }
       input.disabled = true;
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const updateInput = (e) => {

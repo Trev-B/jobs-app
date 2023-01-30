@@ -15,6 +15,7 @@ const UserPage = (props) => {
       nav('/');
     }
     getUserJobs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getUserJobs = async () => {

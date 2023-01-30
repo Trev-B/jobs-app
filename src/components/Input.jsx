@@ -3,7 +3,7 @@ import './Input.css';
 
 const Input = (props) => {
   const { inputProps, onChange } = props;
-  const { name, type, placeholder, required, checked } = inputProps;
+  const { name, type, placeholder, required } = inputProps;
 
   const renderInputType = (inputType) => {
     switch (inputType) {
